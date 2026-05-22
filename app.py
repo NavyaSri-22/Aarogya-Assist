@@ -4,7 +4,6 @@ import base64
 from io import BytesIO
 from PIL import Image
 from PyPDF2 import PdfReader
-from transformers import BlipProcessor, BlipForConditionalGeneration
 from groq import Groq
 
 # Try importing pdf2image and pytesseract cleanly; provide fallbacks if binary paths differ in environment
