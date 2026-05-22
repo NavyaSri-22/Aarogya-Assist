@@ -1,6 +1,7 @@
 streamlit
+groq
 google-generativeai
 Pillow
+PyPDF2
 pdf2image
 pytesseract
-PyPDF2
