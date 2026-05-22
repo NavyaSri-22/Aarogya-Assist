@@ -1,7 +1,6 @@
 import streamlit as st
 import time
 import base64
-import torch
 from io import BytesIO
 from PIL import Image
 from PyPDF2 import PdfReader
