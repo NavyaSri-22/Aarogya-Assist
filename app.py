@@ -14,15 +14,6 @@ try:
 except ImportError:
     HAS_OCR = False
 
-# --- LAZY LOADING CACHED MODERN AI MODELS ---
-@st.cache_resource
-def load_vision_models():
-    processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
-    model_blip = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
-    return processor, model_blip
-
-processor, model_blip = load_vision_models()
-
 # --- INITIALIZE GROQ INFERENCE CORE ENGINE ---
 client = Groq(api_key="API KEY")
 
