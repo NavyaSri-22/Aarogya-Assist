@@ -3,7 +3,8 @@ import time
 import base64
 from io import BytesIO
 from PIL import Image
-from PyPDF2 import PdfReader
+from PyPDF2 import PdfReader 
+import os
 from groq import Groq
 
 # Try importing pdf2image and pytesseract cleanly; provide fallbacks if binary paths differ in environment
@@ -15,7 +16,10 @@ except ImportError:
     HAS_OCR = False
 
 # --- INITIALIZE GROQ INFERENCE CORE ENGINE ---
-client = Groq(api_key="API KEY")
+client = Groq(
+    api_key=os.getenv("GROQ_API_KEY")
+)
+st.write(os.getenv("GROQ_API_KEY"))
 
 # --- INITIALIZE MULTILINGUAL DICTIONARY FRAMEWORK ---
 LANG_DICT = {
