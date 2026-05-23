@@ -280,7 +280,7 @@ elif st.session_state.page == "main_app":
             st.rerun()
 
     # --- METRICS DASHBOARD ---
- col1, col2, col3, col4 = st.columns(4)
+    col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">MODEL ACCURACY</p><p class="telemetry-val">94.2%</p></div>', unsafe_allow_html=True)
     with col2:
