@@ -19,7 +19,7 @@ except ImportError:
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
-st.write(os.getenv("GROQ_API_KEY"))
+
 
 # --- INITIALIZE MULTILINGUAL DICTIONARY FRAMEWORK ---
 LANG_DICT = {
