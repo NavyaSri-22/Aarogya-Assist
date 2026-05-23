@@ -280,17 +280,7 @@ elif st.session_state.page == "main_app":
             st.rerun()
 
     # --- METRICS DASHBOARD ---
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">MODEL ACCURACY</p><p class="telemetry-val">94.2%</p></div>', unsafe_allow_html=True)
-    with col2:
-        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">REPORTS PROCESSED</p><p class="telemetry-val">10K+</p></div>', unsafe_allow_html=True)
-    with col3:
-        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">STREAMS RESOLVED</p><p class="telemetry-val">50K+</p></div>', unsafe_allow_html=True)
-    with col4:
-        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">SYSTEM LATENCY</p><p class="telemetry-val">1.2s</p></div>', unsafe_allow_html=True)
-        
-
+   
     tab_chat, tab_vision, tab_reports = st.tabs([f"💬 {LT['chat_header']}", f"🖼️ {LT['image_header']}", f"📋 {LT['report_header']}"])
 
     # --- TAB 1: INTERACTIVE CHAT ---
