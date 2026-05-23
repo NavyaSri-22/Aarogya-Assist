@@ -461,7 +461,7 @@ if submit_btn and user_query:
     </div>
     """, unsafe_allow_html=True)
     if st.session_state.risk_level == "emergency":
-    st.markdown("""
+       st.markdown("""
         <div style="background-color: #ff4b4b22; border: 2px solid #ff4b4b; padding: 20px; border-radius: 10px; margin-top: 20px;">
             <h3 style="color: #ff4b4b; margin-top: 0;">⚠️ Critical Emergency Warning</h3>
             <p style="color: #fff;">Your query indicates potential acute medical symptoms. This AI assistant cannot handle true medical emergencies. Please immediately visit the nearest emergency room or dial emergency services (102 / 112).</p>
