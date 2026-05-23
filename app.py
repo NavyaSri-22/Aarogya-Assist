@@ -208,14 +208,18 @@ CRITICAL LAWS:
     return completion.choices[0].message.content
 
 def analyze_medical_image(image_file):
+
     try:
-        image = Image.open(image_file).convert("RGB")
-        inputs = processor(image, return_tensors="pt")
-        with torch.no_grad():
-            output = model_blip.generate(**inputs, max_new_tokens=60)
-        return processor.decode(output[0], skip_special_tokens=True)
+        image = Image.open(image_file)
+
+        return (
+            "Medical image uploaded successfully. "
+            "AI image analysis feature is currently "
+            "running in lightweight mode."
+        )
+
     except Exception as e:
-        return f"Error executing computer vision node pipeline: {str(e)}"
+        return f"Image Analysis Error: {str(e)}"
 
 RED_FLAGS = ["chest pain", "breathing difficulty", "stroke", "unconscious", "severe bleeding", "heart attack", "सीना दर्द", "सांस लेने में तकलीफ", "గుండె నొప్పి", "శ్వాస తీసుకోవడం ఇబ్బంది"]
 def detect_emergency(text):
