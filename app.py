@@ -307,9 +307,8 @@ st.markdown(
         <span style="color: #888; margin-left: 15px; font-size: 1.2rem; font-weight: 300;">| Patient Triage Workspace</span>
     </div>
     """, 
-    unsafe_html=True
+    unsafe_allow_html=True # <-- Changed 'unsafe_html' to 'unsafe_allow_html'
 )
-st.markdown("---")
 
 # =====================================================================
 # 3. THE 4 NEW HEALTH TRIAGE FLASHCARDS
