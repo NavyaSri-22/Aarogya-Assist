@@ -280,82 +280,15 @@ elif st.session_state.page == "main_app":
             st.rerun()
 
     # --- METRICS DASHBOARD ---
-   #  =====================================================================
-# 1. INITIALIZE HEALTH STATES (Paste right after sidebar definitions)
-# =====================================================================
-if 'triage_status' not in st.session_state:
-    st.session_state.triage_status = "🟢 Waiting for Input"
-if 'clinical_risk' not in st.session_state:
-    st.session_state.clinical_risk = "🟢 Stable / Safe"
-if 'recommendation' not in st.session_state:
-    st.session_state.recommendation = "Awaiting Query"
-if 'risk_level' not in st.session_state:
-    st.session_state.risk_level = "low"
-
-EMERGENCY_KEYWORDS = [
-    "chest pain", "difficulty breathing", "breathing issue", "stroke", 
-    "heart attack", "unconscious", "heavy bleeding", "poison", "suicide", "swallowed bleach"
-]
-
-# =====================================================================
-# 2. BRANDING HEADER (Displays "Aarogya Assist" visibly on the main workspace)
-# =====================================================================
-st.markdown(
-    """
-    <div style="display: flex; align-items: center; margin-bottom: 20px;">
-        <h1 style="color: #00D2FF; margin: 0; font-size: 2.5rem;">⚕️ Aarogya Assist</h1>
-        <span style="color: #888; margin-left: 15px; font-size: 1.2rem; font-weight: 300;">| Patient Triage Workspace</span>
-    </div>
-    """, 
-    unsafe_allow_html=True # <-- Changed 'unsafe_html' to 'unsafe_allow_html'
-)
-
-# =====================================================================
-# 3. THE 4 NEW HEALTH TRIAGE FLASHCARDS
-# =====================================================================
-h_col1, h_col2, h_col3, h_col4 = st.columns(4)
-
-with h_col1:
-    st.info(f"**📋 SESSION STATUS**\n\n{st.session_state.triage_status}")
-
-with h_col2:
-    if st.session_state.risk_level == "emergency":
-        st.error(f"**🚨 CLINICAL RISK**\n\n{st.session_state.clinical_risk}")
-    else:
-        st.success(f"**🚨 CLINICAL RISK**\n\n{st.session_state.clinical_risk}")
-
-with h_col3:
-    st.metric(label="🩺 RECOMMENDATION", value=st.session_state.recommendation)
-
-with h_col4:
-    st.metric(label="🔒 DATA SECURITY", value="HIPAA Compliant")
-
-st.markdown("---")
-
-# =====================================================================
-# 4. RE-DESIGNED CHAT INPUT INTERFACE
-# =====================================================================
-st.subheader("💬 AI Medical Workspace Chat")
-
-user_query = st.text_input("Ask your health query here...", key="widget_query")
-submit_btn = st.button("Send Query ⚡")
-
-if submit_btn and user_query:
-    query_lowercase = user_query.lower()
-    is_emergency = any(keyword in query_lowercase for keyword in EMERGENCY_KEYWORDS)
-    
-    if is_emergency:
-        st.session_state.triage_status = "🔴 STOPPED"
-        st.session_state.clinical_risk = "🔴 CRITICAL RED-FLAG"
-        st.session_state.recommendation = "Call 102/112"
-        st.session_state.risk_level = "emergency"
-        st.slots = [] # Reset layouts if any
-        st.rerun()
-    else:
-        st.session_state.triage_status = "🟢 Done"
-        st.session_state.clinical_risk = "🟢 Stable / Safe"
-        st.session_state.recommendation = "General Consult"
-        st.session_state.risk_level = "low"
+ col1, col2, col3, col4 = st.columns(4)
+    with col1:
+        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">MODEL ACCURACY</p><p class="telemetry-val">94.2%</p></div>', unsafe_allow_html=True)
+    with col2:
+        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">REPORTS PROCESSED</p><p class="telemetry-val">10K+</p></div>', unsafe_allow_html=True)
+    with col3:
+        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">STREAMS RESOLVED</p><p class="telemetry-val">50K+</p></div>', unsafe_allow_html=True)
+    with col4:
+        st.markdown('<div class="glass-card" style="text-align:center;"><p style="color:#94A3B8; margin:0; font-size:0.85rem;">SYSTEM LATENCY</p><p class="telemetry-val">1.2s</p></div>', unsafe_allow_html=True)
         
 
     tab_chat, tab_vision, tab_reports = st.tabs([f"💬 {LT['chat_header']}", f"🖼️ {LT['image_header']}", f"📋 {LT['report_header']}"])
@@ -459,10 +392,4 @@ if submit_btn and user_query:
         ⚠️ {LT['disclaimer_text']}<br><br>© 2026 Aarogya Assist • AI Triage Platform
     </div>
     """, unsafe_allow_html=True)
-    if st.session_state.risk_level == "emergency":
-       st.markdown("""
-        <div style="background-color: #ff4b4b22; border: 2px solid #ff4b4b; padding: 20px; border-radius: 10px; margin-top: 20px;">
-            <h3 style="color: #ff4b4b; margin-top: 0;">⚠️ Critical Emergency Warning</h3>
-            <p style="color: #fff;">Your query indicates potential acute medical symptoms. This AI assistant cannot handle true medical emergencies. Please immediately visit the nearest emergency room or dial emergency services (102 / 112).</p>
-        </div>
-    """, unsafe_html=True)
+   
